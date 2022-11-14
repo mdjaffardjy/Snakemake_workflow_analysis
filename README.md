@@ -20,7 +20,7 @@ Please submit GitHub issues to provide feedback or ask for new features, and con
 
 ### Conda environment
 
-The conda environment can be found [here](/data/conda_env.txt).
+The conda environment can be found [here](/data/env_conda.txt).
 
 ### Source data
 
