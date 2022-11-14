@@ -4,11 +4,11 @@
 
 # Snakemake_workflow_analysis
 
-In this repository is presented a Snakemake workflow analyser. It takes one or several snakefiles and it  It has three major components :
+In this repository is presented a Snakemake workflow analyser. It takes one or several snakefiles and it has three major libraries :
 
 -  The snakemake parser that  allows users to extract information (info on processes or and the structure) of a single or multiple Snakemake workflows. It is found in the folder [src](/src/parsing_snkmk.py). It extracts the snakemake components of a workflow (notably processors) and helps extracting info on the workflow such as the number of processors (here, rules), as well as their code, name, inputs and outputs. It doesn't extract the structure. It also finds the tools present in each processor.
 - The second one, [__search_biotools__](/src/search_biotools_dump.py) finds tools matches and informations in bio.tools using a dump found in the inputs.
-- The last one, [__get_characteristics__](/src/get_characteristics.py) compiles the extracted information about the processors (rules).
+- The last one, [__get_characteristics__](/src/get_characteristics.py) compiles in a dataframethe extracted information about the processors (rules) previously parsed with parsing_snkmk. 
 
  
 
@@ -18,27 +18,30 @@ Please submit GitHub issues to provide feedback or ask for new features, and con
 
 ## Install and Run
 
-### Conda env
+### Conda environment
 
-The conda environment can be found here.
+The conda environment can be found [here](/data/conda_env.txt).
 
 ### Source data
 
-The source data can be found in the [crawl file](/data/wf_crawl_snakemake.json). This file contains git metadata as well as links for the workflows.
+The source data can be found in the [crawl file](/data/wf_crawl_snakemake.json). This file contains git metadata as well as links for the workflows. One can download the Snakefiles from this json. It is heavily recommended to store the data in the form /<name owner>/<name project>/<number>.snakefile
 
 ### To run
-The analyzer needs as input the address of a folder containing the all the workflows wanting to be analyzed.
+The analyzer needs as input the address of a folder containing all the snakefiles to analyze.
 
-launch a script containing the following :
+In a script, import [parsing_snkmk](/src/parsing_snkmk.py) and use these two functions:
 
 ```
+import parsing_snkmk as ps
+
 path_wf = "path/to/snakefiles/folder"
+
 # workflow parsing
-wf = parse_wf_folder(path_wf)
+wf_list = ps.parse_wf_folder(path_wf)
 dict_tool, total_extr = ps.make_dict_wf_with_biotools_dump(wf)
-write_json_in_txt(wf_dict, outputdir, inputdir)
 
 ```
+Your results will be in the object wf_list. You will have additional information about the tools you extracted in dict_tool and total_extr.
 
 
 
