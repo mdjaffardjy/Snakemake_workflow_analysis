@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Feb  9 08:51:09 2021
+
+@author: marinedjaffardjy
+"""
+
 from rdflib import ConjunctiveGraph
 from rdflib.namespace import Namespace, RDF, RDFS
 import jellyfish
@@ -9,11 +17,9 @@ oboInOwl = Namespace('http://www.geneontology.org/formats/oboInOwl#')
 
 #loading the edam data
 kg = ConjunctiveGraph()
-#kg.load("../data/bioschemas-dump.ttl", format="turtle")
-#kg.load("../data/EDAM_1.25.owl")
 
-kg.load("/home/marinedjaffardjy/Documents/wf_features/data/bioschemas-dump.ttl", format="turtle")
-kg.load("/home/marinedjaffardjy/Documents/wf_features/data/EDAM_1.25.owl")
+kg.load("../data/bioschemas-dump.ttl", format="turtle")
+kg.load("../data/EDAM_1.25.owl")
 
 def get_sorted_matches(toolname):
     #input : string tool name

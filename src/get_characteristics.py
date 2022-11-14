@@ -8,18 +8,8 @@ Created on Mon Mar 29 08:55:23 2021
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import statistics
-import json
-import requests
-from difflib import SequenceMatcher
-import sys
-sys.path.insert(1, '/home/marinedjaffardjy/Documents/wf_features/src/parsing')
-#from parsing_snkmk import *
-import ntpath
-import glob, os, shutil
-import statistics
-import snakemake.parser as snp
+
+# here is a collection of functions that help 
 
 def get_parsing_stats(df_800, dict_tool, total_extr, tot_tools):
     # prints the stats of the parser
